@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 //const { prefix, token } = require("./config.json");
-const token = process.env.DJS_TOKEN;
-const prefix = process.env.PREFIX;
 const ytdl = require("ytdl-core");
 
 const client = new Discord.Client();
@@ -22,17 +20,17 @@ client.once("disconnect", () => {
 
 client.on("message", async message => {
     if (message.author.bot) return;
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(process.env.PREFIX)) return;
 
     const serverQueue = queue.get(message.guild.id);
 
-    if (message.content.startsWith(`${prefix}play`)) {
+    if (message.content.startsWith(`${process.env.PREFIX}play`)) {
         execute(message, serverQueue);
         return;
-    } else if (message.content.startsWith(`${prefix}skip`)) {
+    } else if (message.content.startsWith(`${process.env.PREFIX}skip`)) {
         skip(message, serverQueue);
         return;
-    } else if (message.content.startsWith(`${prefix}stop`)) {
+    } else if (message.content.startsWith(`${process.env.PREFIX}stop`)) {
         stop(message, serverQueue);
         return;
     } else {
@@ -132,4 +130,4 @@ function play(guild, song) {
     serverQueue.textChannel.send(`Start playing: **${song.title}**`);
 }
 
-client.login(token);
+client.login(process.env.DJS_TOKEN);

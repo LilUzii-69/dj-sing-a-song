@@ -15,15 +15,15 @@ Open the configuration file located in the main folder `config.js`.
 ```js
 module.exports = {
     app: {
-        px: 'XXX',
+        px: '!',
         token: 'XXX',
-        playing: 'by Zerio ❤️'
+        playing: 'LilBoii'
     },
 
     opt: {
         DJ: {
             enabled: false,
-            roleName: 'XXX',
+            roleName: 'เสี่ยดี',
             commands: []
         },
         maxVol: 100,
